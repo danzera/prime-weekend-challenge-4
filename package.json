@@ -1,5 +1,5 @@
 {
-  "name": "kick-it-root-down",
+  "name": "prime-weekend-challenge-4",
   "version": "1.0.0",
   "description": "Grunt/Bootstrap Fun Times",
   "main": "Gruntfile.js",
@@ -20,5 +20,8 @@
     "grunt-contrib-watch": "^1.0.0",
     "jquery": "^3.2.1",
     "mongoose": "^4.9.2"
+  },
+  "devDependencies": {
+    "grunt-browser-sync": "^2.2.0"
   }
 }

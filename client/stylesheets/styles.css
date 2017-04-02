@@ -2,10 +2,10 @@
 
 body {
   /* !important used to override Bootstrap's standard color choice */
-  background-color: lightgreen !important;
+  background-color: salmon !important;
 }
 
 .jumbotron {
   /* !important used to override Bootstrap's standard color choice */
-  background-color: salmon !important;
+  background-color: lightgreen !important;
 }
