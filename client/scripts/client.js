@@ -26,6 +26,7 @@ function displayListings(listingsArray) {
   } // end for-loop
 } // end displayListings()
 
+// display a table with for-sale property details
 function displaySaleProperty(property) {
   var city = property.city;
   var sqft = property.sqft;
@@ -39,6 +40,7 @@ function displaySaleProperty(property) {
   $table.children().last().append('<tr><td class="text-right">Cost:</td><td>' + cost + '</td>');
 } // end displaySaleProperty()
 
+// display a table with rental property details
 function displayRentalProperty(property) {
   var city = property.city;
   var sqft = property.sqft;
@@ -47,7 +49,7 @@ function displayRentalProperty(property) {
   var rent = toUSD(monthlyRent);
   $('#for-rent').append('<div class="col-md-4"><table class="table">');
   var $table = $('#for-rent').children().last().children().last();
-  $table.append('<thead><tr><th><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th><th>Property Details</th>');
+  $table.append('<thead><tr><th><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th><th>Rental Details</th>');
   $table.append('<tbody>');
   $table.children().last().append('<tr><td class="text-right">Location:</td><td>' + city + '</td>');
   $table.children().last().append('<tr><td class="text-right">Space:</td><td>' + sqft + ' sq ft</td>');
