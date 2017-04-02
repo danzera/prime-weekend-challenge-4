@@ -17,13 +17,13 @@ module.exports = function(grunt) {
               expand: true, // don't ask (at least not for now)
               cwd: 'node_modules/jquery/dist/', // cwd === current working directory (where the file(s) you want copied is/are located)
               src: ['jquery.js'], // src === source (what file(s) and/or folders do you want copied -- can include path name, which will copy folder structure as well)
-              dest: 'server/public/vendors/' // dest === destination -- where is/are the file(s) being copied over to?
+              dest: 'server/public/vendors/jquery/' // dest === destination -- where is/are the file(s) being copied over to?
           }, // end jquery{}
           bootstrap: {
               expand: true, // again, don't ask
               cwd: 'node_modules/bootstrap/dist/css/',
               src: ['bootstrap.css'],
-              dest: 'server/public/vendors/'
+              dest: 'server/public/vendors/css/'
           }, // end bootstrap{}
           styles: {
               expand: true, // seriously, stop asking...mysterious are the ways of the force

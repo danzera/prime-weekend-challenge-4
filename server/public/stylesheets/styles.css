@@ -6,6 +6,10 @@ body {
 }
 
 .jumbotron {
-  /* !important used to override Bootstrap's standard color choice */
+  /* !important used to override Bootstrap's standard color choice*/
   background-color: lightgreen !important;
+}
+
+.table {
+  background-color: gray;
 }
