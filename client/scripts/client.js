@@ -4,6 +4,13 @@ $(document).ready(function() {
 
 // initial page setup
 function initialize() {
+  $.ajax({
+    type: 'GET',
+    url: '/listings',
+    success: function(res) {
+      console.log(res);
+    }
+  });
   // add event listeners to the page
   addEventListeners();
 }
