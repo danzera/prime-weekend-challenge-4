@@ -42,7 +42,7 @@ router.get("/", function(req,res){
       console.log('error getting all listings:', err);
       res.sendStatus(500);
     }
-    console.log(allListings);
+    console.log('entire listings collection sent back to client');
     res.send(allListings);
   });
 });
