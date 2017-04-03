@@ -2,36 +2,29 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-// Define HOW Documents will be saved to the Database
-var PropertyListingSchema = mongoose.Schema({
-  rent: Number,
-  cost: Number,
-  sqft: Number,
-  city: String,
-});
-// STILL DON'T KNOW WHAT THE FIRST ARGUMENT HERE IS FOR?
-var Listings = mongoose.model("listings", PropertyListingSchema);
 
-/* SHOULD WE HAVE 2 SCHEMA??? HYPOTHETICALLY, IF WE DID:
-BASED ON STACKOVERFLOW POST & MONGOOSE DOCUMENTATION
-http://stackoverflow.com/questions/14453864/use-more-than-one-schema-per-collection-on-mongodb
+// SCHEMAS: Define HOW Documents will be saved to the Database
+// this schema is strictly used for getting all listings
+var PropertyListingSchema = mongoose.Schema({});
+// schema for rental properties
 var RentalPropertySchema = mongoose.Schema({
   rent: Number,
   sqft: Number,
   city: String,
 });
-
+// schema for for-sale properties
 var SalePropertySchema = mongoose.Schema({
   cost: Number,
   sqft: Number,
   city: String
 });
 
+// MODELS
 var collectionName = 'listings';
-// STILL DON'T KNOW WHAT THE FIRST ARGUMENT HERE IS FOR?
-var Rental = mongoose.model('RentalProp', RentalPropertySchema, collectionName);
-var Sale = mongoose.model('SaleProp', SalePropertySchema, collectionName);
-*/
+var Listings = mongoose.model('listings', PropertyListingSchema, collectionName);
+var Rentals = mongoose.model('rentals', RentalPropertySchema, collectionName);
+var Sales = mongoose.model('rales', SalePropertySchema, collectionName);
+
 
 // GET listings
 router.get("/", function(req,res){
@@ -47,12 +40,15 @@ router.get("/", function(req,res){
   });
 });
 
+// post a new property listing
 router.post("/new", function(req,res){
   //Instance of the Model to be saved to the database
-  var property = new Listings();
+  var property;
   if (req.body.forSale === 'true') {
+    property = new Sales();
     property.cost = parseInt(req.body.price);
   } else {
+    property = new Rentals();
     property.rent = parseInt(req.body.price);
   }
   property.city = req.body.location;
@@ -65,6 +61,8 @@ router.post("/new", function(req,res){
     res.send(savedProperty);
   });
 });
+
+// STRETCH GOALS
 /*
   $.ajax({
       type: "DELETE",

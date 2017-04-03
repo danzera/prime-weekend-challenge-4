@@ -18,6 +18,8 @@ function addEventListeners() {
   $('.newProperty').on('click', '#saleProp', saleRadio); // for-sale radio button
   $('.newProperty').on('click', '#rentalProp', rentalRadio); // rental prop radio button
   $('.newProperty').on('submit', addNewProperty); // submit listing button
+
+
 }
 
 // clear all listing input fields
@@ -82,48 +84,48 @@ function displayListings(listingsArray) {
 // display a table with for-sale property details
 function displaySaleProperty(property) {
   var city = property.city;
-  var sqft = property.sqft;
-  var cost = toUSD(property.cost);
+  var sqft = numWithCommas(property.sqft);
+  var cost = numWithCommas(property.cost);
   $('#for-sale').append('<div class="col-sm-4"><table class="table table-striped"></table></div>');
   var $table = $('#for-sale').children().last().children().last();
-  $table.append('<thead class="sale"><tr><th class="text-center"><div><span class="glyphicon glyphicon-home" aria-hidden="true"></span></div></th><th>Property Details</th>');
+  $table.append('<thead class="sale"><tr><th class="text-center"><div><span class="glyphicon glyphicon-home" role="button" data-toggle="modal" data-target="#myModal" aria-hidden="true"></span></div></th><th>Property Details</th>');
   $table.append('<tbody>');
   $table.children().last().append('<tr><td class="text-right">Location:</td><td>' + city + '</td>');
   $table.children().last().append('<tr><td class="text-right">Space:</td><td>' + sqft + ' sq ft</td>');
-  $table.children().last().append('<tr><td class="text-right">Cost:</td><td>' + cost + '</td>');
+  $table.children().last().append('<tr><td class="text-right">Cost:</td><td>$' + cost + '</td>');
 } // end displaySaleProperty()
 
 // display a table with rental property details
 function displayRentalProperty(property) {
   var city = property.city;
-  var sqft = property.sqft;
+  var sqft = numWithCommas(property.sqft);
   var monthlyRent = parseInt(property.rent / 12);
-  var rent = toUSD(monthlyRent);
+  var rent = numWithCommas(monthlyRent);
   $('#for-rent').append('<div class="col-sm-4"><table class="table table-striped"></table></div>');
   var $table = $('#for-rent').children().last().children().last();
-  $table.append('<thead class="rental"><tr><th class="text-center"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th><th>Rental Details</th>');
+  $table.append('<thead class="rental"><tr><th class="text-center"><span class="glyphicon glyphicon-calendar" role="button" data-toggle="modal" data-target="#myModal" aria-hidden="true"></span></th><th>Rental Details</th>');
   $table.append('<tbody>');
   $table.children().last().append('<tr><td class="text-right">Location:</td><td>' + city + '</td>');
   $table.children().last().append('<tr><td class="text-right">Space:</td><td>' + sqft + ' sq ft</td>');
-  $table.children().last().append('<tr><td class="text-right">Rent:</td><td>' + rent + ' per mo.</td>');
+  $table.children().last().append('<tr><td class="text-right">Rent:</td><td>$' + rent + ' per mo.</td>');
 } // end displayRentalProperty()
 
 // MODULE MADNESS! talk about some DRY code...
-function toUSD(someNumber) {
+function numWithCommas(someNumber) {
   var numString = someNumber.toString();
-  var usd = '$';
+  var numCommas = '';
 
   if (numString.length < 4) {
-    usd += numString;
+    numCommas += numString;
   } else if (numString.length < 7) {
-    usd += numString.substring(0, numString.length - 3) + ',' +
+    numCommas += numString.substring(0, numString.length - 3) + ',' +
            numString.substring(numString.length - 3);
   } else if (numString.length < 10 ){
-    usd += numString.substring(0, numString.length - 6) + ',' +
+    numCommas += numString.substring(0, numString.length - 6) + ',' +
            numString.substring(numString.length - 6, numString.length - 3) + ',' +
            numString.substring(numString.length - 3);
   }
-  return usd;
+  return numCommas;
 }
 
 // AJAX
