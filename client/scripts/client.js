@@ -66,7 +66,9 @@ function addNewProperty(event) {
 // display a combination of for-sale properties and rental properties
 function displayListings(listingsArray) {
   $('#for-sale').empty();
+  $('#for-sale').append('<h2 class="text-center">Properties For Sale</h2><hr class="my-4">');
   $('#for-rent').empty();
+  $('#for-rent').append('<h2 class="text-center">Properties For Rent</h2><hr class="my-4">');
   for (var i = 0; i < listingsArray.length; i++) {
     var property = listingsArray[i];
     if (property.cost) { // cost is defined --> sale property
