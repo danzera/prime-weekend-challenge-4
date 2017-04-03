@@ -11,9 +11,9 @@ var listings = require('./routes/listings.js'); // import listings.js module
 var mongoose = require('mongoose'); // import mongoose
 
 // connection string
-// 'localhost:27017/realestate' used for testing locally
-// replace this with the connection string provided by mLab when hosting online
-var mongoURI = 'mongodb://primedigital:realestate123@ds149820.mlab.com:49820/realestate';
+// local host connection string: localhost:27017/realestate
+// mLab connection string: primedigital:realestate123@ds149820.mlab.com:49820/realestate
+var mongoURI = 'mongodb://localhost:27017/realestate';
 var database = mongoose.connect(mongoURI).connection; // establish database connection
 
 // handle any database connection errors

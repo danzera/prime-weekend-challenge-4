@@ -64,6 +64,8 @@ function addNewProperty(event) {
 // DOM updates
 // display a combination of for-sale properties and rental properties
 function displayListings(listingsArray) {
+  $('#for-sale').empty();
+  $('#for-rent').empty();
   for (var i = 0; i < listingsArray.length; i++) {
     var property = listingsArray[i];
     if (property.cost) { // cost is defined --> sale property
@@ -141,7 +143,7 @@ function postProperty(property) {
     url:'/listings/new',
     data: property,
     success: function(res) {
-      console.log('success!', res);
+      displayListings();
     }
   });
 }

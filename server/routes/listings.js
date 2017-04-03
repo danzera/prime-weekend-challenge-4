@@ -46,25 +46,25 @@ router.get("/", function(req,res){
     res.send(allListings);
   });
 });
-/* HARD MODE
-//Save a new employee
-router.post("/", function(req,res){
+
+router.post("/new", function(req,res){
   //Instance of the Model to be saved to the database
-  var employee = new Employees();
-  employee.name = req.body.name;
-  employee.position = req.body.position;
-  employee.salary = req.body.salary;
-  employee.status = true;
-  employee.save(function(err, savedEmployee){
+  var property = new Listings();
+  if (req.body.forSale === 'true') {
+    property.cost = parseInt(req.body.price);
+  } else {
+    property.rent = parseInt(req.body.price);
+  }
+  property.city = req.body.location;
+  property.sqft = req.body.size;
+  property.save(function(err, savedProperty){
     if(err){
       console.log(err);
       res.sendStatus(500);
     }
-
-    res.send(savedEmployee);
+    res.send(savedProperty);
   });
 });
-*/
 /*
   $.ajax({
       type: "DELETE",
