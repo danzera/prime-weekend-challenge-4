@@ -1,9 +1,13 @@
 .jumbotron {
-  background-color: #d9edf7;
+  background-color: #f7edd9;
 }
 
-thead {
-  background-color: #d9edf7;
+.sale {
+  background-color: #edd9f7;
+}
+
+.rental {
+  background-color: #d9f7ed;
 }
 
 table {
