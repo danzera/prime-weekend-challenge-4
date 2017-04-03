@@ -31,7 +31,7 @@ function displaySaleProperty(property) {
   var city = property.city;
   var sqft = property.sqft;
   var cost = toUSD(property.cost);
-  $('#for-sale').append('<div class="col-md-4"><table class="table table-striped"></table></div>');
+  $('#for-sale').append('<div class="col-sm-4"><table class="table table-striped"></table></div>');
   var $table = $('#for-sale').children().last().children().last();
   $table.append('<thead class="sale"><tr><th class="text-center"><div><span class="glyphicon glyphicon-home" aria-hidden="true"></span></div></th><th>Property Details</th>');
   $table.append('<tbody>');
@@ -46,7 +46,7 @@ function displayRentalProperty(property) {
   var sqft = property.sqft;
   var monthlyRent = parseInt(property.rent / 12);
   var rent = toUSD(monthlyRent);
-  $('#for-rent').append('<div class="col-md-4"><table class="table table-striped"></table></div>');
+  $('#for-rent').append('<div class="col-sm-4"><table class="table table-striped"></table></div>');
   var $table = $('#for-rent').children().last().children().last();
   $table.append('<thead class="rental"><tr><th class="text-center"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></th><th>Rental Details</th>');
   $table.append('<tbody>');
