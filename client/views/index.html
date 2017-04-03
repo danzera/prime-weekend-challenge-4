@@ -17,27 +17,31 @@
 <body>
   <div class="container-fluid">
     <!--jumbotron is a Bootrap class-->
-    <div class="jumbotron text-center">
+    <div class="jumbotron">
       <h1 class="display-3">Prime Digital Real Estate</h1>
       <p class="lead">
         How real is it...?
       </p>
       <hr class="my-4">
-        <form>
+        <form class="newProperty">
           <div class="form-group">
             <label>What type of property are you listing?</label><br>
-            <label class="radio-inline"><input type="radio" name="optradio">Sale Property</label>
-            <label class="radio-inline"><input type="radio" name="optradio">Rental Property</label>
+            <label class="radio-inline"><input type="radio" name="optionsRadios" id="saleProp" value="Sale Property" checked>Sale Property</label>
+            <label class="radio-inline"><input type="radio" name="optionsRadios" id="rentalProp" value="Rental Property">Rental Property</label>
           </div>
           <div class="form-group text-left">
-            <label>Where is the property located?</label>
+            <label>Where is the precise placement of the property?</label>
             <input type="text" class="form-control" id="location" placeholder="City">
           </div>
           <div class="form-group text-left">
-            <label class="text-left">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label class="text-left">How much room to roam does the property possess?</label>
+            <input type="number" class="form-control" id="size" placeholder="Square Footage">
           </div>
-          <button type="submit" class="btn btn-primary btn-lg">Submit Listing</button>
+          <div class="form-group text-left">
+            <label class="text-left">How much cash do you hope to collect?</label>
+            <input type="number" class="form-control" id="cost" placeholder="Sale Price">
+          </div>
+          <button type="submit" class="btn btn-lg submitBtn">Submit Listing</button>
         </form>
     </div>
     <div class="listingsDisplay">

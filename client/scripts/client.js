@@ -11,10 +11,16 @@ function initialize() {
 
 // any event listeners needed
 function addEventListeners() {
-  // HARD MODE -- need some type of listeners for property addition
+  $('.newProperty').on('submit', addNewProperty);
 }
 
-// DOM stuff
+function addNewProperty(event) {
+  event.preventDefault();
+  console.log('submitting a property to the server');
+}
+
+// DOM updates
+// display a combination of for-sale properties and rental properties
 function displayListings(listingsArray) {
   for (var i = 0; i < listingsArray.length; i++) {
     var property = listingsArray[i];
