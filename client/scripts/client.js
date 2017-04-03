@@ -1,9 +1,13 @@
+// boolean used for updating placeholder text and sending new listings to the server
+var forSale = true;
+
 $(document).ready(function() {
   initialize(); // establish initial user experience
 });
 
 // initial page setup
 function initialize() {
+  // get all listings from the database
   getAllListings();
   // add event listeners to the page
   addEventListeners();
@@ -11,12 +15,50 @@ function initialize() {
 
 // any event listeners needed
 function addEventListeners() {
-  $('.newProperty').on('submit', addNewProperty);
+  $('.newProperty').on('click', '#saleProp', saleRadio); // for-sale radio button
+  $('.newProperty').on('click', '#rentalProp', rentalRadio); // rental prop radio button
+  $('.newProperty').on('submit', addNewProperty); // submit listing button
+}
+
+// clear all listing input fields
+function resetInputs() {
+  $('#saleProp').prop('checked', true);
+  saleRadio();
+  var location = $('#location').val('');
+  var size = $('#size').val('');
+  var price = $('#price').val('');
+}
+
+// when for-sale radio button is clicked
+function saleRadio() {
+  forSale = true; // update forSale varialbe to true
+  $('#price').attr('placeholder','Sale Price'); // alter placeholder text for price input
+}
+
+// when rental property radio button is clicked
+function rentalRadio() {
+  forSale = false; // update forSale varialbe to false
+  $('#price').attr('placeholder','Annualized Rent'); // alter placeholder text for price input
 }
 
 function addNewProperty(event) {
   event.preventDefault();
-  console.log('submitting a property to the server');
+  var location = $('#location').val();
+  var size = $('#size').val();
+  var price = $('#price').val();
+  // verify input
+  if (location === '' || size === '' || price === '') {
+    alert('Please complete all input fields. Thank you, kindly.');
+  } else {
+    var property = {
+      location: location,
+      size: size,
+      price: price,
+      forSale: forSale
+    };
+    resetInputs();
+    postProperty(property);
+  }
 }
 
 // DOM updates
@@ -87,6 +129,19 @@ function getAllListings() {
     url: '/listings',
     success: function(res) {
       displayListings(res);
+    }
+  });
+}
+
+// send new property to the DB
+function postProperty(property) {
+  console.log('posting property:', property);
+  $.ajax({
+    type: 'POST',
+    url:'/listings/new',
+    data: property,
+    success: function(res) {
+      console.log('success!', res);
     }
   });
 }
