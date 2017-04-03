@@ -1,15 +1,11 @@
-/* any custom CSS we want for our project */
-
-body {
-  /* !important used to override Bootstrap's standard color choice */
-  background-color: salmon !important;
-}
-
 .jumbotron {
-  /* !important used to override Bootstrap's standard color choice*/
-  background-color: lightgreen !important;
+  background-color: #d9edf7;
 }
 
-.table {
-  background-color: gray;
+thead {
+  background-color: #d9edf7;
+}
+
+table {
+  border: 1px solid #ddd;
 }
