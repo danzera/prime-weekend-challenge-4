@@ -144,7 +144,7 @@ function postProperty(property) {
     url:'/listings/new',
     data: property,
     success: function(res) {
-      displayListings();
+      getAllListings();
     }
   });
 }
