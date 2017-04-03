@@ -41,6 +41,7 @@ function rentalRadio() {
   $('#price').attr('placeholder','Annualized Rent'); // alter placeholder text for price input
 }
 
+// add a new property to the database
 function addNewProperty(event) {
   event.preventDefault();
   var location = $('#location').val();
@@ -59,7 +60,7 @@ function addNewProperty(event) {
     resetInputs();
     postProperty(property);
   }
-}
+} // end addNewProperty()
 
 // DOM updates
 // display a combination of for-sale properties and rental properties

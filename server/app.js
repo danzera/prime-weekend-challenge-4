@@ -13,7 +13,7 @@ var mongoose = require('mongoose'); // import mongoose
 // connection string
 // local host connection string: localhost:27017/realestate
 // mLab connection string: primedigital:realestate123@ds149820.mlab.com:49820/realestate
-var mongoURI = 'mongodb://localhost:27017/realestate';
+var mongoURI = 'mongodb://primedigital:realestate123@ds149820.mlab.com:49820/realestate';
 var database = mongoose.connect(mongoURI).connection; // establish database connection
 
 // handle any database connection errors
